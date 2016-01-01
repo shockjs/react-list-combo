@@ -1,0 +1,43 @@
+{
+  "name": "react-list-combo",
+  "version": "0.0.1",
+  "description": "An isomorphic group of components for table data and pagination.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp",
+    "postinstall": "npm gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shockjs/react-list-combo.git"
+  },
+  "keywords": [
+    "react",
+    "listview",
+    "pagination",
+    "gridview",
+    "tableview"
+  ],
+  "author": "Damian Dennis <damiandennis@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shockjs/react-list-combo/issues"
+  },
+  "homepage": "https://github.com/shockjs/react-list-combo#readme",
+  "dependencies": {
+    "react": "^0.14.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "del": "^2.2.0",
+    "eslint-plugin-react": "^3.13.1",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-eslint": "^1.1.1",
+    "run-sequence": "^1.1.5"
+  }
+}
