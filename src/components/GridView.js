@@ -7,6 +7,8 @@ class GridView extends Component
    */
   render()
   {
+    let { tableClassName } = this.props;
+
     // Only GridColumns are valid components.
     let grids = React.Children.toArray(this.props.children).filter((child) => {
       return child.type.name === 'GridColumn';
