@@ -4,8 +4,8 @@ const GridColumn = require('./dist/components/GridColumn');
 const Pagination = require('./dist/components/Pagination');
 
 module.exports = {
-  ListView: ListView,
-  GridView: GridView,
-  GridColumn: GridColumn,
-  Pagination: Pagination
+  ListView: ListView.default,
+  GridView: GridView.default,
+  GridColumn: GridColumn.default,
+  Pagination: Pagination.default
 };
