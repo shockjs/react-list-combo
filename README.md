@@ -25,6 +25,13 @@ GridView:
 ```
   * tableClassName: (optional) The class to apply to the table.
 
+GridColumn:
+```xml
+<GridColumn header="{string}" name="{string}">{Component}</GridColumn>
+```
+  * header: (optional) The column header.
+  * name: The object key for each row.
+
 ### Examples
 
 Bootstrap basic usage. see examples for more info.
