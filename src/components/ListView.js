@@ -20,7 +20,12 @@ class ListView extends Component
      * If initData is present check if it is a request or just a dump of data.
      */
     if (initData !== undefined) {
-      if (typeof initData === 'object') {
+      if (Array.isArray(initData)) {
+        // Client side pagination applies.
+        totalCount = initData.length;
+        currentData = initData;
+      }
+      else if (initData instanceof Object) {
 
         let { meta, payload } = initData;
         currentData = payload;
@@ -34,10 +39,6 @@ class ListView extends Component
           totalCount = payload.length;
         }
       }
-    } else {
-      // Client side pagination applies.
-      totalCount = initData.length;
-      currentData = initData;
     }
 
     return {

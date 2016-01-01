@@ -3,6 +3,10 @@ const eslint = require('gulp-eslint');
 const runSequence = require('run-sequence');
 const babel = require('gulp-babel');
 const del = require('del');
+const webpack = require("webpack");
+var gutil = require("gulp-util");
+const WebpackDevServer = require("webpack-dev-server");
+const webpackConfig = require("./webpack.js");
 
 gulp.task('eslint', () => {
   gulp.src(['src/**/*.js'])
@@ -21,6 +25,14 @@ gulp.task('clean:dist', () => {
 });
 
 /**
+ *  Moves all non-js files to dist folder.
+ */
+gulp.task('move:dist', () => {
+  return gulp.src('src/**/!(*.js)')
+    .pipe(gulp.dest('./dist'));
+});
+
+/**
  * Moves all js files, converts to es5 and moves to dist folder.
  */
 gulp.task('build:dist', () => {
@@ -32,6 +44,23 @@ gulp.task('build:dist', () => {
     .pipe(gulp.dest('dist'));
 });
 
+/**
+ * Runs webpack.
+ */
+gulp.task("webpack", function(callback) {
+  // run webpack
+  webpack(webpackConfig, function(err, stats) {
+    if(err) throw new gutil.PluginError("webpack", err);
+    gutil.log("[webpack]", stats.toString({
+      // output options
+    }));
+    callback();
+  });
+});
+
+gulp.task('examples', () => {
+  runSequence('eslint', 'clean:dist', 'move:dist', 'build:dist', 'webpack');
+});
 
 gulp.task('default', () => {
   runSequence('eslint', 'clean:dist', 'build:dist');
