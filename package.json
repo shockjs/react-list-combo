@@ -1,6 +1,6 @@
 {
   "name": "react-list-combo",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An isomorphic group of components for table data and pagination.",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "isomorphic-fetch": "^2.2.0",
-	"react-dom": "^0.14.5",
+    "react-dom": "^0.14.5",
     "react-redux": "^4.0.6",
     "redux": "^3.0.5",
     "redux-thunk": "^1.0.3",
@@ -42,7 +42,7 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
     "gulp-eslint": "^1.1.1",
-     "run-sequence": "^1.1.5",
+    "run-sequence": "^1.1.5",
     "webpack": "^1.12.9"
   }
 }
