@@ -9,6 +9,42 @@
 npm install react-list-combo
 ```
 
+### Documentation
+
+ListView:
+```xml
+<ListView initData={object|array} dataSource={function} perPage={number}></ListView>
+```
+  * initData: (required) The initial page of results or all results.
+  * dataSource: (optional) Only required for server side pagination. Has a page parameter to specify the next page of results.
+  * perPage: (optional) Only required for client side pagination.
+
+GridView:
+```xml
+<GridView tableClassName={string}></GridView>
+```
+  * tableClassName: (optional) The class to apply to the table.
+
+### Examples
+
+Bootstrap basic usage. see examples for more info.
+```xml
+<ListView initData={ users } dataSource={ this.fetchMore.bind(this) }>
+  <GridView tableClassName="table table-bordered table-response table-hover table-condensed">
+    <GridColumn header="#" name="id" />
+    <GridColumn header="First Name" name="firstName" />
+    <GridColumn header="Last Name" name="lastName" />
+    <GridColumn header="Username" name="username" />
+    <GridColumn header="Active" name="active" />
+  </GridView>
+  <Pagination />
+</ListView>
+```
+
+Examples are provided in the examples folder. There is an example of both server
+and client style pagination that use the same endpoint. The example uses redux.
+
+https://github.com/shockjs/react-list-combo/tree/master/dist/examples
 
 > The MIT License (MIT)
 
