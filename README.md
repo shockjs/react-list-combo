@@ -21,16 +21,30 @@ ListView:
 
 GridView:
 ```xml
-<GridView tableClassName={string}></GridView>
+<GridView tableClassName={string} currentData={array} currentPage={number} perPage={number}></GridView>
 ```
   * tableClassName: (optional) The class to apply to the table.
+  * currentData: (required) The data to show. If nested under ListView it will be provided automatically.
+  * currentPage: (required) The currentPage to show. If nested under ListView it will be provided automatically.
+  * perPage: (required) The current number of results to show. If nested under ListView it will be provided automatically.
 
 GridColumn:
 ```xml
 <GridColumn header="{string}" name="{string}">{Component}</GridColumn>
 ```
   * header: (optional) The column header.
-  * name: The object key for each row.
+  * name: (required) The object key for each row.
+  * [Content]: (optional) Can be a custom component to help display the data.
+
+Pagination:
+```xml
+<Pagination currentPage={number} pagesCount={number} pageSpan={number} changePage={function} />
+```
+  * currentPage: (required) The current page index. If directly nested under ListView will be provided automatically.
+  * pagesCount: (required) The total number of pages. If directly nested under ListView will be provided automatically.
+  * pageSpan: (optional - default: 2) The breadth of page numbers to display.
+  * changePage: (required) function to execute when pagination is used. If directly nested under ListView will be provided automatically. Callback has page number as a parameter.
+
 
 ### Examples
 
