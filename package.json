@@ -4,7 +4,9 @@
   "description": "An isomorphic group of components for table data and pagination.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "gulp",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
