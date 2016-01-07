@@ -58,10 +58,6 @@ gulp.task("webpack", function(callback) {
   });
 });
 
-gulp.task('examples', () => {
-  runSequence('eslint', 'clean:dist', 'move:dist', 'build:dist', 'webpack');
-});
-
 gulp.task('default', () => {
-  runSequence('eslint', 'clean:dist', 'build:dist');
+  runSequence('eslint', 'clean:dist', 'move:dist', 'build:dist', 'webpack');
 });

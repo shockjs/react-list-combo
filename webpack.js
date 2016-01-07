@@ -9,6 +9,10 @@ module.exports = {
     publicPath: '/',
     filename: 'react-list-combo.js'
   },
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
+  },
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ }
