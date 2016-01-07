@@ -25,10 +25,8 @@
     "url": "https://github.com/shockjs/react-list-combo/issues"
   },
   "homepage": "https://github.com/shockjs/react-list-combo#readme",
-  "dependencies": {
-    "react": "^0.14.5"
-  },
   "devDependencies": {
+    "react": "^0.14.6",
     "isomorphic-fetch": "^2.2.0",
     "react-dom": "^0.14.5",
     "react-redux": "^4.0.6",
