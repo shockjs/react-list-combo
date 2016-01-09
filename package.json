@@ -17,7 +17,8 @@
     "listview",
     "pagination",
     "gridview",
-    "tableview"
+    "tableview",
+    "react-component"
   ],
   "author": "Damian Dennis <damiandennis@gmail.com>",
   "license": "MIT",
