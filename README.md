@@ -19,6 +19,12 @@ ListView:
   * dataSource: (optional) Only required for server side pagination. Has a page parameter to specify the next page of results.
   * perPage: (optional) Only required for client side pagination.
 
+ListRows:
+```xml
+<ListRows component={Component}></ListRows>
+```
+  * component: (required) The component to render for each row. parameter passed are data and id.
+
 GridView:
 ```xml
 <GridView tableClassName={string} currentData={array} currentPage={number} perPage={number}></GridView>
