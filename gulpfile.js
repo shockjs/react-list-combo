@@ -5,8 +5,8 @@ const babel = require('gulp-babel');
 const del = require('del');
 const webpack = require("webpack");
 var gutil = require("gulp-util");
-const WebpackDevServer = require("webpack-dev-server");
 const webpackConfig = require("./webpack.js");
+const webpackConfigExamples = require("./src/examples/webpack.js");
 
 gulp.task('eslint', () => {
   gulp.src(['src/**/*.js'])
@@ -58,6 +58,17 @@ gulp.task("webpack", function(callback) {
   });
 });
 
+gulp.task("examples", function(callback) {
+  // run webpack
+  webpack(webpackConfigExamples, function(err, stats) {
+    if(err) throw new gutil.PluginError("webpack", err);
+    gutil.log("[webpack]", stats.toString({
+      // output options
+    }));
+    callback();
+  });
+});
+
 gulp.task('default', () => {
-  runSequence('eslint', 'clean:dist', 'move:dist', 'build:dist', 'webpack');
+  runSequence('eslint', 'clean:dist', 'move:dist', 'build:dist', 'webpack', 'examples');
 });

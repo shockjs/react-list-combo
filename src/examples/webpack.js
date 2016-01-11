@@ -2,16 +2,12 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './index.js'
+    './dist/examples/index.js'
   ],
   output: {
-    path: __dirname + '/dist/',
+    path: __dirname + '/../../dist/examples/',
     publicPath: '/',
-    filename: 'react-list-combo.js'
-  },
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
+    filename: 'build.js'
   },
   module: {
     loaders: [

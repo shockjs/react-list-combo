@@ -84,6 +84,7 @@ class ListView extends Component
       let { perPage, currentPage, currentData } = this.state;
       switch (child.type.name) {
       case 'GridView':
+      case 'ListRows':
         let data = currentData;
         if (this.props.dataSource === undefined) {
           let offset = (currentPage - 1) * perPage;

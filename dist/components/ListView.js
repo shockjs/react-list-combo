@@ -122,6 +122,7 @@ var ListView = (function (_Component) {
 
         switch (child.type.name) {
           case 'GridView':
+          case 'ListRows':
             var data = currentData;
             if (_this2.props.dataSource === undefined) {
               var offset = (currentPage - 1) * perPage;
