@@ -1,6 +1,6 @@
 {
   "name": "react-list-combo",
-  "version": "0.0.17",
+  "version": "0.1.0",
   "description": "An isomorphic group of components for table data and pagination.",
   "main": "index.js",
   "scripts": {
