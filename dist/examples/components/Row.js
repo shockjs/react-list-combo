@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -6,17 +6,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
-
-var _index = require('../../../index.js');
-
-var _Row = require('./Row');
-
-var _Row2 = _interopRequireDefault(_Row);
-
-var _reactRedux = require('react-redux');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,57 +18,48 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClientComponent = (function (_Component) {
-  _inherits(ClientComponent, _Component);
+var Row = (function (_Component) {
+  _inherits(Row, _Component);
 
-  function ClientComponent() {
-    _classCallCheck(this, ClientComponent);
+  function Row() {
+    _classCallCheck(this, Row);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(ClientComponent).apply(this, arguments));
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Row).apply(this, arguments));
   }
 
-  _createClass(ClientComponent, [{
-    key: 'render',
+  _createClass(Row, [{
+    key: "render",
+
+    /**
+     * Render the component.
+     */
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
         _react2.default.createElement(
-          'h3',
+          "span",
           null,
-          'Users'
+          _react2.default.createElement("img", { src: "https://unsplash.it/100/100" })
         ),
         _react2.default.createElement(
-          _index.ListView,
-          { initData: this.props.users, perPage: 2 },
-          _react2.default.createElement(
-            _index.GridView,
-            { tableClassName: 'table table-bordered table-response table-hover table-condensed' },
-            _react2.default.createElement(_index.GridColumn, { header: '#', name: 'id' }),
-            _react2.default.createElement(_index.GridColumn, { header: 'First Name', name: 'firstName' }),
-            _react2.default.createElement(_index.GridColumn, { header: 'Last Name', name: 'lastName' }),
-            _react2.default.createElement(_index.GridColumn, { header: 'Username', name: 'username' }),
-            _react2.default.createElement(_index.GridColumn, { header: 'Active', name: 'active' })
-          ),
-          _react2.default.createElement(_index.Pagination, null)
-        ),
-        _react2.default.createElement(
-          _index.ListView,
-          { initData: this.props.users, perPage: 3 },
-          _react2.default.createElement(
-            _index.ListRows,
-            { className: 'well' },
-            _react2.default.createElement(_Row2.default, null)
-          ),
-          _react2.default.createElement(_index.Pagination, null)
+          "span",
+          null,
+          this.props.data.firstName,
+          " ",
+          this.props.data.lastName
         )
       );
     }
   }]);
 
-  return ClientComponent;
+  return Row;
 })(_react.Component);
 
-exports.default = (0, _reactRedux.connect)(function (state) {
-  return state;
-})(ClientComponent);
+Row.propTypes = {
+  index: _react2.default.PropTypes.number,
+  data: _react2.default.PropTypes.object
+};
+Row.defaultProps = {};
+
+exports.default = Row;

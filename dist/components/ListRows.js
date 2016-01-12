@@ -36,14 +36,20 @@ var ListRows = (function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      var _props = this.props;
+      var currentData = _props.currentData;
+      var rowClassName = _props.rowClassName;
+
       return _react2.default.createElement(
         'div',
-        null,
-        this.rows.map(function (row, i) {
+        { className: rowClassName },
+        currentData.map(function (row, i) {
           return _react2.default.createElement(
             'div',
             { key: i },
-            _react2.default.cloneElement(_this2.props.content, { data: row, index: i })
+            _react2.default.Children.toArray(_this2.props.children).map(function (Child) {
+              return _react2.default.cloneElement(Child, { data: row, index: i });
+            })
           );
         })
       );
@@ -54,8 +60,7 @@ var ListRows = (function (_Component) {
 })(_react.Component);
 
 ListRows.propTypes = {
-  content: _react2.default.PropTypes.element,
-  rows: _react2.default.PropTypes.array
+  rowClassName: _react2.default.PropTypes.string
 };
 
 exports.default = ListRows;

@@ -21,9 +21,10 @@ ListView:
 
 ListRows:
 ```xml
-<ListRows component={Component}></ListRows>
+<ListRows rowClassName={string}>{Component}</ListRows>
 ```
-  * component: (required) The component to render for each row. parameter passed are data and id.
+  * rowClassName: (optional) The css class to add to each row.
+  * Component: (required) The component to render for each row. parameter passed are data and id.
 
 GridView:
 ```xml

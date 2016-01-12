@@ -8,11 +8,15 @@ class ListRows extends Component
    */
   render()
   {
+    const { currentData, rowClassName } = this.props;
+
     return (
-      <div>
-        { this.rows.map((row, i) =>
+      <div className={ rowClassName }>
+        { currentData.map((row, i) =>
           <div key={i}>
-            { React.cloneElement(this.props.content, { data: row, index: i }) }
+            { React.Children
+              .toArray(this.props.children)
+              .map(Child => React.cloneElement(Child, { data: row, index: i })) }
           </div>
         )}
       </div>
@@ -21,8 +25,7 @@ class ListRows extends Component
 }
 
 ListRows.propTypes = {
-  content: React.PropTypes.element,
-  rows: React.PropTypes.array
+  rowClassName: React.PropTypes.string
 };
 
 export default ListRows;

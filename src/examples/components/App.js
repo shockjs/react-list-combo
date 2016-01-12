@@ -9,10 +9,10 @@ class App extends Component
     return (
       <div>
         <h2>Server Component</h2>
-        <ServerComponent></ServerComponent>
+        <ServerComponent />
 
         <h2>Client Component</h2>
-        <ClientComponent></ClientComponent>
+        <ClientComponent />
       </div>
     );
   }
