@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28,7 +28,7 @@ var Pagination = (function (_Component) {
   }
 
   _createClass(Pagination, [{
-    key: "render",
+    key: 'render',
 
     /**
      * Render the component.
@@ -39,6 +39,7 @@ var Pagination = (function (_Component) {
       var pagesCount = parseInt(this.props.pagesCount); // The total count of all pages in the database.
       var paginationSpan = parseInt(this.props.pageSpan); // The number of pagination entries to show.
       var changePage = this.props.changePage;
+      var disabledClass = this.props.disabledClass || 'disabled';
       var startPos = 2;
       var endPos = startPos + paginationSpan - 1;
       var middlePos = Math.ceil(paginationSpan / 2);
@@ -79,97 +80,97 @@ var Pagination = (function (_Component) {
        * Create pagination range.
        */
       pageLinks.push(_react2.default.createElement(
-        "li",
+        'li',
         { key: identifier++, onClick: function onClick() {
             return changePage(currentPage - 1);
           } },
         _react2.default.createElement(
-          "a",
-          { "aria-label": "Previous" },
+          'a',
+          { 'aria-label': 'Previous' },
           _react2.default.createElement(
-            "span",
-            { "aria-hidden": "true" },
-            "«"
+            'span',
+            { 'aria-hidden': 'true' },
+            '«'
           )
         )
       ));
 
       pageLinks.push(_react2.default.createElement(
-        "li",
+        'li',
         { key: identifier++,
           className: currentPage === 1 ? 'active' : '',
           onClick: function onClick() {
             return changePage(1);
           } },
         _react2.default.createElement(
-          "a",
-          { "aria-label": "1" },
-          "1"
+          'a',
+          { href: '#', 'aria-label': '1' },
+          '1'
         )
       ));
 
       if (startPos > 2) {
         pageLinks.push(_react2.default.createElement(
-          "li",
+          'li',
           { key: identifier++ },
           _react2.default.createElement(
-            "a",
-            { "aria-label": "..." },
-            "..."
+            'a',
+            { className: disabledClass, 'aria-label': '...' },
+            '...'
           )
         ));
       }
-      for (var i = startPos; i <= endPos; i++) {
+      for (var _i = startPos; _i <= endPos; _i++) {
         (function (i) {
           pageLinks.push(_react2.default.createElement(
-            "li",
+            'li',
             { key: identifier++, className: currentPage === i ? 'active' : '', onClick: function onClick() {
                 return changePage(i);
               } },
             _react2.default.createElement(
-              "a",
-              { "aria-label": i },
+              'a',
+              { href: '#', 'aria-label': i },
               i
             )
           ));
-        })(i);
+        })(_i);
       }
       if (endPos + 1 != pagesCount) {
         pageLinks.push(_react2.default.createElement(
-          "li",
+          'li',
           { key: identifier++ },
           _react2.default.createElement(
-            "a",
-            { "aria-label": i + 1 },
-            "..."
+            'a',
+            { className: disabledClass, 'aria-label': i + 1 },
+            '...'
           )
         ));
       }
 
       pageLinks.push(_react2.default.createElement(
-        "li",
+        'li',
         { key: identifier++, className: pagesCount == currentPage ? 'active' : '', onClick: function onClick() {
             return changePage(pagesCount);
           } },
         _react2.default.createElement(
-          "a",
-          { "aria-label": pagesCount },
+          'a',
+          { href: '#', 'aria-label': pagesCount },
           pagesCount
         )
       ));
 
       pageLinks.push(_react2.default.createElement(
-        "li",
+        'li',
         { key: identifier, onClick: function onClick() {
             return changePage(currentPage + 1);
           } },
         _react2.default.createElement(
-          "a",
-          { "aria-label": "Next" },
+          'a',
+          { href: '#', 'aria-label': 'Next' },
           _react2.default.createElement(
-            "span",
-            { "aria-hidden": "true" },
-            "»"
+            'span',
+            { 'aria-hidden': 'true' },
+            '»'
           )
         )
       ));
@@ -178,11 +179,11 @@ var Pagination = (function (_Component) {
         return false; //Dont render anything...
       } else {
           return _react2.default.createElement(
-            "nav",
+            'nav',
             null,
             _react2.default.createElement(
-              "ul",
-              { className: "pagination" },
+              'ul',
+              { className: 'pagination' },
               pageLinks.map(function (link) {
                 return link;
               })
@@ -196,6 +197,7 @@ var Pagination = (function (_Component) {
 })(_react.Component);
 
 Pagination.propTypes = {
+  disabledClass: _react2.default.PropTypes.string,
   currentPage: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
   pagesCount: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
   pageSpan: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number])

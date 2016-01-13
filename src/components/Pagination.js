@@ -76,7 +76,7 @@ class Pagination extends Component
         </li>
       );
     }
-    for (let i = startPos; i <= endPos; i++) {
+    for (var i = startPos; i <= endPos; i++) {
       ((i) => {
         pageLinks.push(
           <li key={identifier++} className={ currentPage === i ? 'active' : '' } onClick={() => changePage(i)}>

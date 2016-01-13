@@ -464,7 +464,7 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
@@ -516,7 +516,7 @@
 	  }
 
 	  _createClass(Pagination, [{
-	    key: "render",
+	    key: 'render',
 
 	    /**
 	     * Render the component.
@@ -527,6 +527,7 @@
 	      var pagesCount = parseInt(this.props.pagesCount); // The total count of all pages in the database.
 	      var paginationSpan = parseInt(this.props.pageSpan); // The number of pagination entries to show.
 	      var changePage = this.props.changePage;
+	      var disabledClass = this.props.disabledClass || 'disabled';
 	      var startPos = 2;
 	      var endPos = startPos + paginationSpan - 1;
 	      var middlePos = Math.ceil(paginationSpan / 2);
@@ -566,42 +567,42 @@
 	      /*
 	       * Create pagination range.
 	       */
-	      pageLinks.push(_react2.default.createElement("li", { key: identifier++, onClick: function onClick() {
+	      pageLinks.push(_react2.default.createElement('li', { key: identifier++, onClick: function onClick() {
 	          return changePage(currentPage - 1);
-	        } }, _react2.default.createElement("a", { "aria-label": "Previous" }, _react2.default.createElement("span", { "aria-hidden": "true" }, "«"))));
+	        } }, _react2.default.createElement('a', { 'aria-label': 'Previous' }, _react2.default.createElement('span', { 'aria-hidden': 'true' }, '«'))));
 
-	      pageLinks.push(_react2.default.createElement("li", { key: identifier++,
+	      pageLinks.push(_react2.default.createElement('li', { key: identifier++,
 	        className: currentPage === 1 ? 'active' : '',
 	        onClick: function onClick() {
 	          return changePage(1);
-	        } }, _react2.default.createElement("a", { "aria-label": "1" }, "1")));
+	        } }, _react2.default.createElement('a', { href: '#', 'aria-label': '1' }, '1')));
 
 	      if (startPos > 2) {
-	        pageLinks.push(_react2.default.createElement("li", { key: identifier++ }, _react2.default.createElement("a", { "aria-label": "..." }, "...")));
+	        pageLinks.push(_react2.default.createElement('li', { key: identifier++ }, _react2.default.createElement('a', { className: disabledClass, 'aria-label': '...' }, '...')));
 	      }
-	      for (var i = startPos; i <= endPos; i++) {
+	      for (var _i = startPos; _i <= endPos; _i++) {
 	        (function (i) {
-	          pageLinks.push(_react2.default.createElement("li", { key: identifier++, className: currentPage === i ? 'active' : '', onClick: function onClick() {
+	          pageLinks.push(_react2.default.createElement('li', { key: identifier++, className: currentPage === i ? 'active' : '', onClick: function onClick() {
 	              return changePage(i);
-	            } }, _react2.default.createElement("a", { "aria-label": i }, i)));
-	        })(i);
+	            } }, _react2.default.createElement('a', { href: '#', 'aria-label': i }, i)));
+	        })(_i);
 	      }
 	      if (endPos + 1 != pagesCount) {
-	        pageLinks.push(_react2.default.createElement("li", { key: identifier++ }, _react2.default.createElement("a", { "aria-label": i + 1 }, "...")));
+	        pageLinks.push(_react2.default.createElement('li', { key: identifier++ }, _react2.default.createElement('a', { className: disabledClass, 'aria-label': i + 1 }, '...')));
 	      }
 
-	      pageLinks.push(_react2.default.createElement("li", { key: identifier++, className: pagesCount == currentPage ? 'active' : '', onClick: function onClick() {
+	      pageLinks.push(_react2.default.createElement('li', { key: identifier++, className: pagesCount == currentPage ? 'active' : '', onClick: function onClick() {
 	          return changePage(pagesCount);
-	        } }, _react2.default.createElement("a", { "aria-label": pagesCount }, pagesCount)));
+	        } }, _react2.default.createElement('a', { href: '#', 'aria-label': pagesCount }, pagesCount)));
 
-	      pageLinks.push(_react2.default.createElement("li", { key: identifier, onClick: function onClick() {
+	      pageLinks.push(_react2.default.createElement('li', { key: identifier, onClick: function onClick() {
 	          return changePage(currentPage + 1);
-	        } }, _react2.default.createElement("a", { "aria-label": "Next" }, _react2.default.createElement("span", { "aria-hidden": "true" }, "»"))));
+	        } }, _react2.default.createElement('a', { href: '#', 'aria-label': 'Next' }, _react2.default.createElement('span', { 'aria-hidden': 'true' }, '»'))));
 
 	      if (pagesCount < 2) {
 	        return false; //Dont render anything...
 	      } else {
-	          return _react2.default.createElement("nav", null, _react2.default.createElement("ul", { className: "pagination" }, pageLinks.map(function (link) {
+	          return _react2.default.createElement('nav', null, _react2.default.createElement('ul', { className: 'pagination' }, pageLinks.map(function (link) {
 	            return link;
 	          })));
 	        }
@@ -612,6 +613,7 @@
 	})(_react.Component);
 
 	Pagination.propTypes = {
+	  disabledClass: _react2.default.PropTypes.string,
 	  currentPage: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
 	  pagesCount: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
 	  pageSpan: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number])
