@@ -21989,12 +21989,12 @@
 	      if (startPos > 2) {
 	        pageLinks.push(_react2.default.createElement('li', { key: identifier++ }, _react2.default.createElement('a', { className: disabledClass, 'aria-label': '...' }, '...')));
 	      }
-	      for (var _i = startPos; _i <= endPos; _i++) {
+	      for (var i = startPos; i <= endPos; i++) {
 	        (function (i) {
 	          pageLinks.push(_react2.default.createElement('li', { key: identifier++, className: currentPage === i ? 'active' : '', onClick: function onClick() {
 	              return changePage(i);
 	            } }, _react2.default.createElement('a', { href: '#', 'aria-label': i }, i)));
-	        })(_i);
+	        })(i);
 	      }
 	      if (endPos + 1 != pagesCount) {
 	        pageLinks.push(_react2.default.createElement('li', { key: identifier++ }, _react2.default.createElement('a', { className: disabledClass, 'aria-label': i + 1 }, '...')));

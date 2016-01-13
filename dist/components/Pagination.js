@@ -120,7 +120,7 @@ var Pagination = (function (_Component) {
           )
         ));
       }
-      for (var _i = startPos; _i <= endPos; _i++) {
+      for (var i = startPos; i <= endPos; i++) {
         (function (i) {
           pageLinks.push(_react2.default.createElement(
             'li',
@@ -133,7 +133,7 @@ var Pagination = (function (_Component) {
               i
             )
           ));
-        })(_i);
+        })(i);
       }
       if (endPos + 1 != pagesCount) {
         pageLinks.push(_react2.default.createElement(
