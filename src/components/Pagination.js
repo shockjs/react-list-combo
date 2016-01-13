@@ -64,14 +64,14 @@ class Pagination extends Component
       <li key={identifier++}
           className={currentPage === 1 ? 'active' : ''}
           onClick={() => changePage(1)}>
-        <a aria-label="1">1</a>
+        <a href="#" aria-label="1">1</a>
       </li>
     );
 
     if (startPos > 2) {
       pageLinks.push(
         <li key={identifier++}>
-          <a aria-label="...">...</a>
+          <a className="disabled" aria-label="...">...</a>
         </li>
       );
     }
@@ -79,7 +79,7 @@ class Pagination extends Component
       ((i) => {
         pageLinks.push(
           <li key={identifier++} className={ currentPage === i ? 'active' : '' } onClick={() => changePage(i)}>
-            <a aria-label={i}>{i}</a>
+            <a href="#" aria-label={i}>{i}</a>
           </li>
         );
       })(i);
@@ -87,20 +87,20 @@ class Pagination extends Component
     if (endPos + 1 != pagesCount) {
       pageLinks.push(
         <li key={identifier++}>
-          <a aria-label={i + 1}>...</a>
+          <a className="disabled" aria-label={i + 1}>...</a>
         </li>
       );
     }
 
     pageLinks.push(
       <li key={identifier++} className={ pagesCount == currentPage ? 'active' : '' } onClick={() => changePage(pagesCount)}>
-        <a aria-label={ pagesCount }>{ pagesCount }</a>
+        <a href="#" aria-label={ pagesCount }>{ pagesCount }</a>
       </li>
     );
 
     pageLinks.push(
       <li key={identifier} onClick={() => changePage(currentPage + 1)}>
-        <a aria-label="Next">
+        <a href="#" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
