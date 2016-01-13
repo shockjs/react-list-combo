@@ -610,7 +610,7 @@
 	      if (pagesCount < 2) {
 	        return false; //Dont render anything...
 	      } else {
-	          return _react2.default.createElement('nav', null, _react2.default.createElement('ul', { className: 'pagination' }, pageLinks.map(function (link) {
+	          return _react2.default.createElement('nav', { className: this.props.wrapperClassName }, _react2.default.createElement('ul', { className: 'pagination' }, pageLinks.map(function (link) {
 	            return link;
 	          })));
 	        }
@@ -621,6 +621,7 @@
 	})(_react.Component);
 
 	Pagination.propTypes = {
+	  wrapperClassName: _react2.default.PropTypes.string,
 	  disabledClass: _react2.default.PropTypes.string,
 	  currentPage: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
 	  pagesCount: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),

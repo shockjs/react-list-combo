@@ -188,7 +188,7 @@ var Pagination = (function (_Component) {
       } else {
           return _react2.default.createElement(
             'nav',
-            null,
+            { className: this.props.wrapperClassName },
             _react2.default.createElement(
               'ul',
               { className: 'pagination' },
@@ -205,6 +205,7 @@ var Pagination = (function (_Component) {
 })(_react.Component);
 
 Pagination.propTypes = {
+  wrapperClassName: _react2.default.PropTypes.string,
   disabledClass: _react2.default.PropTypes.string,
   currentPage: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
   pagesCount: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),

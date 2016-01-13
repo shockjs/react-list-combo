@@ -111,7 +111,7 @@ class Pagination extends Component
       return false; //Dont render anything...
     } else {
       return (
-        <nav>
+        <nav className={ this.props.wrapperClassName }>
           <ul className="pagination">
             {pageLinks.map((link) =>
               link
@@ -125,6 +125,7 @@ class Pagination extends Component
 }
 
 Pagination.propTypes = {
+  wrapperClassName: React.PropTypes.string,
   disabledClass: React.PropTypes.string,
   currentPage: React.PropTypes.oneOfType([
     React.PropTypes.string,
