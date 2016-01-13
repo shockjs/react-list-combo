@@ -8,14 +8,15 @@ class Pagination extends Component
    */
   render()
   {
-    var pageLinks = [];
-    var currentPage = parseInt(this.props.currentPage); // The current page we are on.
-    var pagesCount = parseInt(this.props.pagesCount); // The total count of all pages in the database.
-    var paginationSpan = parseInt(this.props.pageSpan); // The number of pagination entries to show.
-    var changePage = this.props.changePage;
-    var startPos = 2;
-    var endPos = startPos + paginationSpan - 1;
-    var middlePos = Math.ceil(paginationSpan / 2);
+    let pageLinks = [];
+    let currentPage = parseInt(this.props.currentPage); // The current page we are on.
+    let pagesCount = parseInt(this.props.pagesCount); // The total count of all pages in the database.
+    let paginationSpan = parseInt(this.props.pageSpan); // The number of pagination entries to show.
+    let changePage = this.props.changePage;
+    let disabledClass = this.props.disabledClass || 'disabled';
+    let startPos = 2;
+    let endPos = startPos + paginationSpan - 1;
+    let middlePos = Math.ceil(paginationSpan / 2);
 
     // Adjust start and end positions to maintain range and keep current page as active.
     if (currentPage >= startPos + 1) {
@@ -71,11 +72,11 @@ class Pagination extends Component
     if (startPos > 2) {
       pageLinks.push(
         <li key={identifier++}>
-          <a className="disabled" aria-label="...">...</a>
+          <a className={ disabledClass } aria-label="...">...</a>
         </li>
       );
     }
-    for (var i = startPos; i <= endPos; i++) {
+    for (let i = startPos; i <= endPos; i++) {
       ((i) => {
         pageLinks.push(
           <li key={identifier++} className={ currentPage === i ? 'active' : '' } onClick={() => changePage(i)}>
@@ -87,7 +88,7 @@ class Pagination extends Component
     if (endPos + 1 != pagesCount) {
       pageLinks.push(
         <li key={identifier++}>
-          <a className="disabled" aria-label={i + 1}>...</a>
+          <a className={ disabledClass } aria-label={i + 1}>...</a>
         </li>
       );
     }
@@ -124,6 +125,7 @@ class Pagination extends Component
 }
 
 Pagination.propTypes = {
+  disabledClass: React.PropTypes.string,
   currentPage: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.number
