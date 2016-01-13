@@ -86,7 +86,9 @@ var Pagination = (function (_Component) {
           } },
         _react2.default.createElement(
           'a',
-          { 'aria-label': 'Previous' },
+          { href: '#', onClick: function onClick(e) {
+              return e.preventDefault();
+            }, 'aria-label': 'Previous' },
           _react2.default.createElement(
             'span',
             { 'aria-hidden': 'true' },
@@ -129,7 +131,9 @@ var Pagination = (function (_Component) {
               } },
             _react2.default.createElement(
               'a',
-              { href: '#', 'aria-label': i },
+              { href: '#', onClick: function onClick(e) {
+                  return e.preventDefault();
+                }, 'aria-label': i },
               i
             )
           ));
@@ -154,7 +158,9 @@ var Pagination = (function (_Component) {
           } },
         _react2.default.createElement(
           'a',
-          { href: '#', 'aria-label': pagesCount },
+          { href: '#', onClick: function onClick(e) {
+              return e.preventDefault();
+            }, 'aria-label': pagesCount },
           pagesCount
         )
       ));
@@ -166,7 +172,9 @@ var Pagination = (function (_Component) {
           } },
         _react2.default.createElement(
           'a',
-          { href: '#', 'aria-label': 'Next' },
+          { href: '#', onClick: function onClick(e) {
+              return e.preventDefault();
+            }, 'aria-label': 'Next' },
           _react2.default.createElement(
             'span',
             { 'aria-hidden': 'true' },

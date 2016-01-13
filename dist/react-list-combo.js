@@ -569,7 +569,9 @@
 	       */
 	      pageLinks.push(_react2.default.createElement('li', { key: identifier++, onClick: function onClick() {
 	          return changePage(currentPage - 1);
-	        } }, _react2.default.createElement('a', { 'aria-label': 'Previous' }, _react2.default.createElement('span', { 'aria-hidden': 'true' }, '«'))));
+	        } }, _react2.default.createElement('a', { href: '#', onClick: function onClick(e) {
+	          return e.preventDefault();
+	        }, 'aria-label': 'Previous' }, _react2.default.createElement('span', { 'aria-hidden': 'true' }, '«'))));
 
 	      pageLinks.push(_react2.default.createElement('li', { key: identifier++,
 	        className: currentPage === 1 ? 'active' : '',
@@ -584,7 +586,9 @@
 	        (function (i) {
 	          pageLinks.push(_react2.default.createElement('li', { key: identifier++, className: currentPage === i ? 'active' : '', onClick: function onClick() {
 	              return changePage(i);
-	            } }, _react2.default.createElement('a', { href: '#', 'aria-label': i }, i)));
+	            } }, _react2.default.createElement('a', { href: '#', onClick: function onClick(e) {
+	              return e.preventDefault();
+	            }, 'aria-label': i }, i)));
 	        })(i);
 	      }
 	      if (endPos + 1 != pagesCount) {
@@ -593,11 +597,15 @@
 
 	      pageLinks.push(_react2.default.createElement('li', { key: identifier++, className: pagesCount == currentPage ? 'active' : '', onClick: function onClick() {
 	          return changePage(pagesCount);
-	        } }, _react2.default.createElement('a', { href: '#', 'aria-label': pagesCount }, pagesCount)));
+	        } }, _react2.default.createElement('a', { href: '#', onClick: function onClick(e) {
+	          return e.preventDefault();
+	        }, 'aria-label': pagesCount }, pagesCount)));
 
 	      pageLinks.push(_react2.default.createElement('li', { key: identifier, onClick: function onClick() {
 	          return changePage(currentPage + 1);
-	        } }, _react2.default.createElement('a', { href: '#', 'aria-label': 'Next' }, _react2.default.createElement('span', { 'aria-hidden': 'true' }, '»'))));
+	        } }, _react2.default.createElement('a', { href: '#', onClick: function onClick(e) {
+	          return e.preventDefault();
+	        }, 'aria-label': 'Next' }, _react2.default.createElement('span', { 'aria-hidden': 'true' }, '»'))));
 
 	      if (pagesCount < 2) {
 	        return false; //Dont render anything...

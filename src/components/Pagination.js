@@ -55,7 +55,7 @@ class Pagination extends Component
      */
     pageLinks.push(
       <li key={identifier++} onClick={() => changePage(currentPage - 1)}>
-        <a aria-label="Previous">
+        <a href="#" onClick={(e) => e.preventDefault()} aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
@@ -80,7 +80,7 @@ class Pagination extends Component
       ((i) => {
         pageLinks.push(
           <li key={identifier++} className={ currentPage === i ? 'active' : '' } onClick={() => changePage(i)}>
-            <a href="#" aria-label={i}>{i}</a>
+            <a href="#" onClick={(e) => e.preventDefault()} aria-label={i}>{i}</a>
           </li>
         );
       })(i);
@@ -95,13 +95,13 @@ class Pagination extends Component
 
     pageLinks.push(
       <li key={identifier++} className={ pagesCount == currentPage ? 'active' : '' } onClick={() => changePage(pagesCount)}>
-        <a href="#" aria-label={ pagesCount }>{ pagesCount }</a>
+        <a href="#" onClick={(e) => e.preventDefault()} aria-label={ pagesCount }>{ pagesCount }</a>
       </li>
     );
 
     pageLinks.push(
       <li key={identifier} onClick={() => changePage(currentPage + 1)}>
-        <a href="#" aria-label="Next">
+        <a href="#" onClick={(e) => e.preventDefault()} aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
