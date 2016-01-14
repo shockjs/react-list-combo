@@ -50,11 +50,14 @@ class Pagination extends Component
 
     let identifier = 0;
 
+    const disablePrev = currentPage == 1 ? disabledClass : '';
+    const disableNext = pagesCount == currentPage ? disabledClass : '';
+
     /*
      * Create pagination range.
      */
     pageLinks.push(
-      <li key={identifier++} onClick={() => changePage(currentPage - 1)}>
+      <li className={ disablePrev } key={identifier++} onClick={() => changePage(currentPage - 1)}>
         <a href="#" onClick={(e) => e.preventDefault()} aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
@@ -71,8 +74,8 @@ class Pagination extends Component
 
     if (startPos > 2) {
       pageLinks.push(
-        <li key={identifier++}>
-          <a className={ disabledClass } aria-label="...">...</a>
+        <li className={ disabledClass } key={identifier++}>
+          <a aria-label="...">...</a>
         </li>
       );
     }
@@ -87,8 +90,8 @@ class Pagination extends Component
     }
     if (endPos + 1 != pagesCount) {
       pageLinks.push(
-        <li key={identifier++}>
-          <a className={ disabledClass } aria-label={i + 1}>...</a>
+        <li className={ disabledClass } key={identifier++}>
+          <a aria-label={i + 1}>...</a>
         </li>
       );
     }
@@ -100,7 +103,7 @@ class Pagination extends Component
     );
 
     pageLinks.push(
-      <li key={identifier} onClick={() => changePage(currentPage + 1)}>
+      <li  className={ disableNext } key={identifier} onClick={() => changePage(currentPage + 1)}>
         <a href="#" onClick={(e) => e.preventDefault()} aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>

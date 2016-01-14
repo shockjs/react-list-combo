@@ -564,10 +564,13 @@
 
 	      var identifier = 0;
 
+	      var disablePrev = currentPage == 1 ? disabledClass : '';
+	      var disableNext = pagesCount == currentPage ? disabledClass : '';
+
 	      /*
 	       * Create pagination range.
 	       */
-	      pageLinks.push(_react2.default.createElement('li', { key: identifier++, onClick: function onClick() {
+	      pageLinks.push(_react2.default.createElement('li', { className: disablePrev, key: identifier++, onClick: function onClick() {
 	          return changePage(currentPage - 1);
 	        } }, _react2.default.createElement('a', { href: '#', onClick: function onClick(e) {
 	          return e.preventDefault();
@@ -580,7 +583,7 @@
 	        } }, _react2.default.createElement('a', { href: '#', 'aria-label': '1' }, '1')));
 
 	      if (startPos > 2) {
-	        pageLinks.push(_react2.default.createElement('li', { key: identifier++ }, _react2.default.createElement('a', { className: disabledClass, 'aria-label': '...' }, '...')));
+	        pageLinks.push(_react2.default.createElement('li', { className: disabledClass, key: identifier++ }, _react2.default.createElement('a', { 'aria-label': '...' }, '...')));
 	      }
 	      for (var i = startPos; i <= endPos; i++) {
 	        (function (i) {
@@ -592,7 +595,7 @@
 	        })(i);
 	      }
 	      if (endPos + 1 != pagesCount) {
-	        pageLinks.push(_react2.default.createElement('li', { key: identifier++ }, _react2.default.createElement('a', { className: disabledClass, 'aria-label': i + 1 }, '...')));
+	        pageLinks.push(_react2.default.createElement('li', { className: disabledClass, key: identifier++ }, _react2.default.createElement('a', { 'aria-label': i + 1 }, '...')));
 	      }
 
 	      pageLinks.push(_react2.default.createElement('li', { key: identifier++, className: pagesCount == currentPage ? 'active' : '', onClick: function onClick() {
@@ -601,7 +604,7 @@
 	          return e.preventDefault();
 	        }, 'aria-label': pagesCount }, pagesCount)));
 
-	      pageLinks.push(_react2.default.createElement('li', { key: identifier, onClick: function onClick() {
+	      pageLinks.push(_react2.default.createElement('li', { className: disableNext, key: identifier, onClick: function onClick() {
 	          return changePage(currentPage + 1);
 	        } }, _react2.default.createElement('a', { href: '#', onClick: function onClick(e) {
 	          return e.preventDefault();

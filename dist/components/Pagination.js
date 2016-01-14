@@ -76,12 +76,15 @@ var Pagination = (function (_Component) {
 
       var identifier = 0;
 
+      var disablePrev = currentPage == 1 ? disabledClass : '';
+      var disableNext = pagesCount == currentPage ? disabledClass : '';
+
       /*
        * Create pagination range.
        */
       pageLinks.push(_react2.default.createElement(
         'li',
-        { key: identifier++, onClick: function onClick() {
+        { className: disablePrev, key: identifier++, onClick: function onClick() {
             return changePage(currentPage - 1);
           } },
         _react2.default.createElement(
@@ -114,10 +117,10 @@ var Pagination = (function (_Component) {
       if (startPos > 2) {
         pageLinks.push(_react2.default.createElement(
           'li',
-          { key: identifier++ },
+          { className: disabledClass, key: identifier++ },
           _react2.default.createElement(
             'a',
-            { className: disabledClass, 'aria-label': '...' },
+            { 'aria-label': '...' },
             '...'
           )
         ));
@@ -142,10 +145,10 @@ var Pagination = (function (_Component) {
       if (endPos + 1 != pagesCount) {
         pageLinks.push(_react2.default.createElement(
           'li',
-          { key: identifier++ },
+          { className: disabledClass, key: identifier++ },
           _react2.default.createElement(
             'a',
-            { className: disabledClass, 'aria-label': i + 1 },
+            { 'aria-label': i + 1 },
             '...'
           )
         ));
@@ -167,7 +170,7 @@ var Pagination = (function (_Component) {
 
       pageLinks.push(_react2.default.createElement(
         'li',
-        { key: identifier, onClick: function onClick() {
+        { className: disableNext, key: identifier, onClick: function onClick() {
             return changePage(currentPage + 1);
           } },
         _react2.default.createElement(
