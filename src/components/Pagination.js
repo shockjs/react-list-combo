@@ -75,7 +75,7 @@ class Pagination extends Component
     if (startPos > 2) {
       pageLinks.push(
         <li className={ disabledClass } key={identifier++}>
-          <a aria-label="...">...</a>
+          <a onClick={(e) => e.preventDefault()} aria-label="...">...</a>
         </li>
       );
     }
@@ -98,7 +98,7 @@ class Pagination extends Component
 
     pageLinks.push(
       <li key={identifier++} className={ pagesCount == currentPage ? 'active' : '' } onClick={() => changePage(pagesCount)}>
-        <a href="#" onClick={(e) => e.preventDefault()} aria-label={ pagesCount }>{ pagesCount }</a>
+        <a onClick={(e) => e.preventDefault()} href="#" onClick={(e) => e.preventDefault()} aria-label={ pagesCount }>{ pagesCount }</a>
       </li>
     );
 

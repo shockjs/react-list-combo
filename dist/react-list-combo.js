@@ -583,7 +583,9 @@
 	        } }, _react2.default.createElement('a', { href: '#', 'aria-label': '1' }, '1')));
 
 	      if (startPos > 2) {
-	        pageLinks.push(_react2.default.createElement('li', { className: disabledClass, key: identifier++ }, _react2.default.createElement('a', { 'aria-label': '...' }, '...')));
+	        pageLinks.push(_react2.default.createElement('li', { className: disabledClass, key: identifier++ }, _react2.default.createElement('a', { onClick: function onClick(e) {
+	            return e.preventDefault();
+	          }, 'aria-label': '...' }, '...')));
 	      }
 	      for (var i = startPos; i <= endPos; i++) {
 	        (function (i) {
@@ -600,7 +602,9 @@
 
 	      pageLinks.push(_react2.default.createElement('li', { key: identifier++, className: pagesCount == currentPage ? 'active' : '', onClick: function onClick() {
 	          return changePage(pagesCount);
-	        } }, _react2.default.createElement('a', { href: '#', onClick: function onClick(e) {
+	        } }, _react2.default.createElement('a', { onClick: function onClick(e) {
+	          return e.preventDefault();
+	        }, href: '#', onClick: function onClick(e) {
 	          return e.preventDefault();
 	        }, 'aria-label': pagesCount }, pagesCount)));
 

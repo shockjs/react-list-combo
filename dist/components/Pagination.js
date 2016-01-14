@@ -120,7 +120,9 @@ var Pagination = (function (_Component) {
           { className: disabledClass, key: identifier++ },
           _react2.default.createElement(
             'a',
-            { 'aria-label': '...' },
+            { onClick: function onClick(e) {
+                return e.preventDefault();
+              }, 'aria-label': '...' },
             '...'
           )
         ));
@@ -161,7 +163,9 @@ var Pagination = (function (_Component) {
           } },
         _react2.default.createElement(
           'a',
-          { href: '#', onClick: function onClick(e) {
+          { onClick: function onClick(e) {
+              return e.preventDefault();
+            }, href: '#', onClick: function onClick(e) {
               return e.preventDefault();
             }, 'aria-label': pagesCount },
           pagesCount
