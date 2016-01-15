@@ -119,6 +119,7 @@ var ListView = (function (_Component) {
         var perPage = _state2.perPage;
         var currentPage = _state2.currentPage;
         var currentData = _state2.currentData;
+        var totalCount = _state2.totalCount;
 
         switch (child.type.name) {
           case 'GridView':
@@ -137,9 +138,12 @@ var ListView = (function (_Component) {
 
             break;
           case 'Pagination':
+          case 'Counter':
             props = Object.assign(props, {
               currentPage: currentPage,
               pagesCount: _this2.getPageCount(),
+              perPage: perPage,
+              totalCount: totalCount,
               changePage: function changePage(page) {
                 return _this2.changePage(page);
               }

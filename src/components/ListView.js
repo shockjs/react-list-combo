@@ -81,7 +81,7 @@ class ListView extends Component
   {
     let componentsWithProps = React.Children.toArray(this.props.children).map((child) => {
       let props = {};
-      let { perPage, currentPage, currentData } = this.state;
+      let { perPage, currentPage, currentData, totalCount } = this.state;
       switch (child.type.name) {
       case 'GridView':
       case 'ListRows':
@@ -99,9 +99,12 @@ class ListView extends Component
 
         break;
       case 'Pagination':
+      case 'Counter':
         props = Object.assign(props, {
           currentPage: currentPage,
           pagesCount: this.getPageCount(),
+          perPage: perPage,
+          totalCount: totalCount,
           changePage: (page) => this.changePage(page)
         });
         break;

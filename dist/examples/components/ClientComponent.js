@@ -16,6 +16,10 @@ var _Row = require('./Row');
 
 var _Row2 = _interopRequireDefault(_Row);
 
+var _CustomCounter = require('./CustomCounter');
+
+var _CustomCounter2 = _interopRequireDefault(_CustomCounter);
+
 var _reactRedux = require('react-redux');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -49,6 +53,11 @@ var ClientComponent = (function (_Component) {
         _react2.default.createElement(
           _index.ListView,
           { initData: this.props.users, perPage: 2 },
+          _react2.default.createElement(
+            _index.Counter,
+            { label: 'Users' },
+            _react2.default.createElement(_CustomCounter2.default, null)
+          ),
           _react2.default.createElement(
             _index.GridView,
             { tableClassName: 'table table-bordered table-response table-hover table-condensed' },

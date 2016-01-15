@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ListView, GridView, Pagination, GridColumn, ListRows } from '../../../index.js';
+import { ListView, GridView, Pagination, GridColumn, ListRows, Counter } from '../../../index.js';
 import Row from './Row';
+import CustomCounter from './CustomCounter';
 import { connect } from 'react-redux';
 
 class ClientComponent extends Component
@@ -11,6 +12,9 @@ class ClientComponent extends Component
       <div>
         <h3>Users</h3>
         <ListView initData={ this.props.users } perPage={2}>
+          <Counter label="Users">
+            <CustomCounter />
+          </Counter>
           <GridView tableClassName="table table-bordered table-response table-hover table-condensed">
             <GridColumn header="#" name="id" />
             <GridColumn header="First Name" name="firstName" />

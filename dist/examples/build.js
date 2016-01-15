@@ -20842,7 +20842,7 @@
 
 	var _ServerComponent2 = _interopRequireDefault(_ServerComponent);
 
-	var _ClientComponent = __webpack_require__(190);
+	var _ClientComponent = __webpack_require__(191);
 
 	var _ClientComponent2 = _interopRequireDefault(_ClientComponent);
 
@@ -21471,13 +21471,15 @@
 	const GridColumn = __webpack_require__(187);
 	const Pagination = __webpack_require__(188);
 	const ListRows = __webpack_require__(189);
+	const Counter = __webpack_require__(190);
 
 	module.exports = {
 	  ListRows: ListRows.default,
 	  ListView: ListView.default,
 	  GridView: GridView.default,
 	  GridColumn: GridColumn.default,
-	  Pagination: Pagination.default
+	  Pagination: Pagination.default,
+	  Counter: Counter.default
 	};
 
 /***/ },
@@ -21627,6 +21629,7 @@
 	        var perPage = _state2.perPage;
 	        var currentPage = _state2.currentPage;
 	        var currentData = _state2.currentData;
+	        var totalCount = _state2.totalCount;
 
 	        switch (child.type.name) {
 	          case 'GridView':
@@ -21645,9 +21648,12 @@
 
 	            break;
 	          case 'Pagination':
+	          case 'Counter':
 	            props = Object.assign(props, {
 	              currentPage: currentPage,
 	              pagesCount: _this2.getPageCount(),
+	              perPage: perPage,
+	              totalCount: totalCount,
 	              changePage: function changePage(page) {
 	                return _this2.changePage(page);
 	              }
@@ -22158,11 +22164,113 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+
+	var Counter = (function (_Component) {
+	  _inherits(Counter, _Component);
+
+	  function Counter() {
+	    _classCallCheck(this, Counter);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Counter).apply(this, arguments));
+	  }
+
+	  _createClass(Counter, [{
+	    key: 'render',
+
+	    /**
+	     * Render the component.
+	     */
+	    value: function render() {
+	      var _props = this.props;
+	      var wrapperClassName = _props.wrapperClassName;
+	      var totalCount = _props.totalCount;
+	      var currentPage = _props.currentPage;
+	      var perPage = _props.perPage;
+	      var label = _props.label;
+
+	      currentPage = parseInt(currentPage);
+
+	      var start = (currentPage - 1) * perPage + 1;
+	      var end = currentPage * perPage <= totalCount ? currentPage * perPage : totalCount;
+
+	      if (_react2.default.Children.count(this.props.children) > 0) {
+	        return _react2.default.createElement('div', { className: wrapperClassName }, _react2.default.Children.toArray(this.props.children).map(function (child) {
+	          return _react2.default.cloneElement(child, { start: start, end: end, totalCount: totalCount, label: label });
+	        }));
+	      } else {
+	        return _react2.default.createElement('div', { className: wrapperClassName }, start, ' to ', end, ' of ', totalCount, ' ', label);
+	      }
+	    }
+	  }]);
+
+	  return Counter;
+	})(_react.Component);
+
+	Counter.propTypes = {
+	  wrapperClassName: _react2.default.PropTypes.string,
+	  label: _react2.default.PropTypes.string,
+	  perPage: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
+	  currentPage: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
+	  totalCount: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number])
+	};
+	Counter.defaultProps = {};
+
+	exports.default = Counter;
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _index = __webpack_require__(184);
 
-	var _Row = __webpack_require__(191);
+	var _Row = __webpack_require__(192);
 
 	var _Row2 = _interopRequireDefault(_Row);
+
+	var _CustomCounter = __webpack_require__(193);
+
+	var _CustomCounter2 = _interopRequireDefault(_CustomCounter);
 
 	var _reactRedux = __webpack_require__(160);
 
@@ -22200,7 +22308,7 @@
 	  _createClass(ClientComponent, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', null, _react2.default.createElement('h3', null, 'Users'), _react2.default.createElement(_index.ListView, { initData: this.props.users, perPage: 2 }, _react2.default.createElement(_index.GridView, { tableClassName: 'table table-bordered table-response table-hover table-condensed' }, _react2.default.createElement(_index.GridColumn, { header: '#', name: 'id' }), _react2.default.createElement(_index.GridColumn, { header: 'First Name', name: 'firstName' }), _react2.default.createElement(_index.GridColumn, { header: 'Last Name', name: 'lastName' }), _react2.default.createElement(_index.GridColumn, { header: 'Username', name: 'username' }), _react2.default.createElement(_index.GridColumn, { header: 'Active', name: 'active' })), _react2.default.createElement(_index.Pagination, null)), _react2.default.createElement(_index.ListView, { initData: this.props.users, perPage: 3 }, _react2.default.createElement(_index.ListRows, { className: 'well' }, _react2.default.createElement(_Row2.default, null)), _react2.default.createElement(_index.Pagination, null)));
+	      return _react2.default.createElement('div', null, _react2.default.createElement('h3', null, 'Users'), _react2.default.createElement(_index.ListView, { initData: this.props.users, perPage: 2 }, _react2.default.createElement(_index.Counter, { label: 'Users' }, _react2.default.createElement(_CustomCounter2.default, null)), _react2.default.createElement(_index.GridView, { tableClassName: 'table table-bordered table-response table-hover table-condensed' }, _react2.default.createElement(_index.GridColumn, { header: '#', name: 'id' }), _react2.default.createElement(_index.GridColumn, { header: 'First Name', name: 'firstName' }), _react2.default.createElement(_index.GridColumn, { header: 'Last Name', name: 'lastName' }), _react2.default.createElement(_index.GridColumn, { header: 'Username', name: 'username' }), _react2.default.createElement(_index.GridColumn, { header: 'Active', name: 'active' })), _react2.default.createElement(_index.Pagination, null)), _react2.default.createElement(_index.ListView, { initData: this.props.users, perPage: 3 }, _react2.default.createElement(_index.ListRows, { className: 'well' }, _react2.default.createElement(_Row2.default, null)), _react2.default.createElement(_index.Pagination, null)));
 	    }
 	  }]);
 
@@ -22212,7 +22320,7 @@
 	})(ClientComponent);
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22287,6 +22395,91 @@
 	Row.defaultProps = {};
 
 	exports.default = Row;
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+
+	var CustomCounter = (function (_Component) {
+	  _inherits(CustomCounter, _Component);
+
+	  function CustomCounter() {
+	    _classCallCheck(this, CustomCounter);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CustomCounter).apply(this, arguments));
+	  }
+
+	  _createClass(CustomCounter, [{
+	    key: 'render',
+
+	    /**
+	     * Render the component.
+	     */
+	    value: function render() {
+	      var _props = this.props;
+	      var totalCount = _props.totalCount;
+	      var start = _props.start;
+	      var end = _props.end;
+	      var label = _props.label;
+
+	      return _react2.default.createElement('div', null, start, ' - ', end, ' / ', totalCount, ' ', label);
+	    }
+	  }]);
+
+	  return CustomCounter;
+	})(_react.Component);
+
+	CustomCounter.propTypes = {
+	  label: _react2.default.PropTypes.string,
+	  start: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
+	  end: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
+	  totalCount: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number])
+	};
+	CustomCounter.defaultProps = {};
+
+	exports.default = CustomCounter;
 
 /***/ }
 /******/ ]);

@@ -41,7 +41,17 @@ GridColumn:
 ```
   * header: (optional) The column header.
   * name: (required) The object key for each row.
-  * [Content]: (optional) Can be a custom component to help display the data.
+  * Component: (optional) Can be a custom component to help display the data.
+
+Counter
+```xml
+<Counter wrapperClassName={string} currentPage={number} perPage={number} totalCount={number}>{Component}</Counter>
+```
+  * wrapperClassName: (optional) class to add to the wrapper div.
+  * currentPage: (required) The current page. If directly under ListView will be provided automatically.
+  * perPage: (required) The number to show per page. If directly under ListView will be provided automatically.
+  * totalCount: (required) The total count of items. If directly under ListView will be provided automatically.
+  * Component: (optional) Can be a custom component to change how to display the data.
 
 Pagination:
 ```xml
